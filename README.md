@@ -70,6 +70,7 @@ alpine 即 阿里云中显示的镜像名<br>
 例如:
 ```
 xhofe/alist
+qbittorrentee/latest
 xiaoyaliu/alist
 ```
 ![](doc/镜像重名.png)
