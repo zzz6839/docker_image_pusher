@@ -5,7 +5,7 @@
 #支持指定架构
 #--platform=linux/arm64 xiaoyaliu/alist
 
-containrrr/watchtower:latest
+nickfedor/watchtower:latest
 p3terx/aria2-pro:latest
 p3terx/ariang:latest
 superng6/qbittorrentee:latest
