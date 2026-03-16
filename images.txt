@@ -11,3 +11,4 @@ p3terx/ariang:latest
 superng6/qbittorrentee:latest
 cmliu/cfnat:latest
 zzz6839/cfnat:latest
+zzz6839/cfnat_new:latest
