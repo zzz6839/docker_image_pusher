@@ -13,3 +13,4 @@ cmliu/cfnat:latest
 zzz6839/cfnat:latest
 zzz6839/cfnat_new:latest
 xream/sub-store:http-meta
+ghcr.io/aninsomniacy/aria2-next:latest
