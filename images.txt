@@ -6,11 +6,7 @@
 #--platform=linux/arm64 xiaoyaliu/alist
 
 nickfedor/watchtower:latest
-p3terx/aria2-pro:latest
 p3terx/ariang:latest
 superng6/qbittorrentee:latest
-cmliu/cfnat:latest
-zzz6839/cfnat:latest
-zzz6839/cfnat_new:latest
 xream/sub-store:http-meta
 ghcr.io/aninsomniacy/aria2-next:latest
