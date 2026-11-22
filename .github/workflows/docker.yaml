@@ -27,25 +27,22 @@ jobs:
         df -hT
         echo "=============================================================================="
 
-    # 增加可用磁盘空间
-    - name: Maximize build space
-      uses: easimon/maximize-build-space@master
-      with:
-
-        root-reserve-mb: 2048
-        swap-size-mb: 128
-        remove-dotnet: 'true'
-        remove-haskell: 'true'
-        # 如果空间还是不够用，可以把以下开启，清理出更多空间
-        # remove-android: 'true'
-        # remove-codeql: 'true'
-        build-mount-path: '/var/lib/docker/'
-
-    - name: Restart docker
-      run: sudo service docker restart
-
-    - name: Free up disk space complete
+    # 注意：不要再使用 easimon/maximize-build-space。
+    #
+    # 新版 ubuntu-latest runner（Ubuntu 26.04 + Docker 29）使用 containerd
+    # image store，镜像层实际写入 /var/lib/containerd，而不是 /var/lib/docker。
+    # 该 action 只把 /var/lib/docker 挂载到扩容卷上，并且会把根分区几乎占满
+    # （root 只剩约 100M），于是 docker pull 解压镜像时就会出现：
+    #   No space left on device
+    #
+    # runner 自带的根分区已经有约 88G 可用空间，直接使用它即可，只需清理
+    # 不需要的预装软件，避免把根分区占满。
+    - name: Free up disk space
       run: |
+        sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android /opt/hostedtoolcache/CodeQL || true
+        sudo docker image prune --all --force || true
+        sudo docker builder prune --all --force || true
+        sudo apt-get clean || true
         echo "Free up disk space complete"
         echo "=============================================================================="
         df -hT
